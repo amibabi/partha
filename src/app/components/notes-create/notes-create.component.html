@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <div class="card-body">
+      <form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+       <div class="form-group">
+          <label for="inputPassword3">Employee Name</label>
+          <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+            formControlName="empid">
+            <option value="">Choose...</option>
+            <option *ngFor="let employee of Employee; let i = index" value="{{employee._id}}">{{employee.empfname}}
+            </option>
+          </select>
+          
+          <div class="invalid-feedback" *ngIf="submitted && myForm.empid.errors?.required">
+            Choose Employee.
+          </div>
+        </div>
+		
+		
+		
+		<div class="form-group">
+          <label for="inputName">Notes Name </label>
+          <input class="form-control" type="text" formControlName="notesname">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.notesname.errors?.required">
+           Notes Name is required.
+          </div>
+        </div>
+		
+		
+		
+		
+
+        <div class="form-group">
+          <label for="inputEmail3">Description</label>
+          <input class="form-control" type="textarea" formControlName="description">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.description.errors?.required">
+            Enter your Notes Description.
+          </div>
+          
+        </div>
+         
+
+        
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>

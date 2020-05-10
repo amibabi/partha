@@ -1,0 +1,55 @@
+ <div class="row justify-content-center">
+   <div class="col-md-4 register-employee">
+     <!-- form card register -->
+     <div class="card card-outline-secondary">
+       <div class="card-header">
+         <h3 class="mb-0">Edit Hobbi</h3>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="editForm2" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="inputPassword3">Employee Name</label>
+            <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+              formControlName="empid">
+              <option value="">Choose...</option>
+              <option *ngFor="let employee of Employee; let i = index" value="{{employee._id}}">{{employee.empfname}}
+              </option>
+            </select>
+            
+            <div class="invalid-feedback" *ngIf="submitted && myForm.empid.errors?.required">
+              Choose Employee.
+            </div>
+          </div>
+      
+      
+      
+      <div class="form-group">
+            <label for="inputName">Hobbi Name </label>
+            <input class="form-control" type="text" formControlName="hobbiname">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.hobbiname.errors?.required">
+             Hobbi Name is required.
+            </div>
+          </div>
+      
+      
+  
+          <div class="form-group">
+            <label for="inputEmail3">Description</label>
+            <input class="form-control" type="textarea" formControlName="description">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && myForm.description.errors?.required">
+              Enter your Project Description.
+            </div>
+            
+          </div>
+
+           <div class="form-group">
+             <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+           </div>
+         </form>
+       </div>
+     </div><!-- form  -->
+   </div>
+ </div>
